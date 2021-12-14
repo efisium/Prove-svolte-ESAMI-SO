@@ -1,0 +1,18 @@
+all: server_exe
+
+server_exe:server.o procedure.o semafori.o
+	gcc -o server_exe server.o procedure.o semafori.o
+
+server.o: server.c header.h semafori.h 
+	gcc -c server.c 
+
+procedure.o:procedure.c header.h semafori.h
+	gcc -c procedure.c
+
+semafori.o:semafori.c semafori.h
+	gcc -c semafori.c
+
+clean:
+	rm -f *.o
+	rm -f *~
+	rm -f ./start

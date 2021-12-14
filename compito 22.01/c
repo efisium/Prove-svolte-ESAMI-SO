@@ -1,0 +1,18 @@
+all: client_exe
+
+client_exe:client.o procedure.o semafori.o
+	gcc -o client_exe client.o procedure.o semafori.o
+
+client.o: client.c header.h semafori.h 
+	gcc -c client.c 
+
+procedure.o:procedure.c header.h semafori.h
+	gcc -c procedure.c
+
+semafori.o:semafori.c semafori.h
+	gcc -c semafori.c
+
+clean:
+	rm -f *.o
+	rm -f *~
+	rm -f ./start
